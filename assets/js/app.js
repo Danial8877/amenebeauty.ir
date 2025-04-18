@@ -40,7 +40,6 @@ after_load.style.display = "none";
 before_load.style.display = "";
 
 window.onload = function () {
-  location.replace("https://danial8877.github.io/amenebeauty.ir");
   before_load.style.display = "none";
   after_load.style.display = "";
 
