@@ -3,9 +3,19 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>صفحه پیدا نشد - 404</title>
+    <title>صفحه مورد نظر یافت نشد | 404</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;700&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;400;500;700;900&display=swap');
+        
+        :root {
+            --primary-color: #ff3a3a;
+            --secondary-color: #ff6b6b;
+            --dark-color: #d32f2f;
+            --light-color: #ffcdd2;
+            --text-color: #333;
+            --bg-gradient: linear-gradient(135deg, #fff5f5 0%, #ffebee 100%);
+        }
         
         * {
             margin: 0;
@@ -15,186 +25,400 @@
         }
         
         body {
-            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
-            height: 100vh;
+            background: var(--bg-gradient);
+            min-height: 100vh;
             display: flex;
             justify-content: center;
             align-items: center;
-            color: #333;
-            line-height: 1.6;
-        }
-        
-        .container {
-            text-align: center;
-            padding: 2rem;
-            max-width: 800px;
-            background-color: rgba(255, 255, 255, 0.9);
-            border-radius: 15px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            color: var(--text-color);
+            line-height: 1.8;
+            overflow-x: hidden;
             position: relative;
-            overflow: hidden;
         }
         
-        h1 {
-            font-size: 8rem;
-            color: #4a6cf7;
-            margin-bottom: 1rem;
-            text-shadow: 3px 3px 0 rgba(0, 0, 0, 0.1);
-            animation: pulse 2s infinite;
-        }
-        
-        h2 {
-            font-size: 2rem;
-            margin-bottom: 1.5rem;
-            color: #333;
-        }
-        
-        p {
-            font-size: 1.2rem;
-            margin-bottom: 2rem;
-            color: #666;
-        }
-        
-        .btn {
-            display: inline-block;
-            padding: 0.8rem 2rem;
-            background-color: #4a6cf7;
-            color: white;
-            text-decoration: none;
-            border-radius: 50px;
-            font-weight: bold;
-            transition: all 0.3s ease;
-            box-shadow: 0 5px 15px rgba(74, 108, 247, 0.4);
-            border: none;
-            cursor: pointer;
-            font-size: 1rem;
-        }
-        
-        .btn:hover {
-            background-color: #3a5bd9;
-            transform: translateY(-3px);
-            box-shadow: 0 8px 20px rgba(74, 108, 247, 0.6);
-        }
-        
-        .btn:active {
-            transform: translateY(0);
-        }
-        
-        .astronaut {
-            position: absolute;
-            width: 150px;
-            animation: float 6s ease-in-out infinite;
-        }
-        
-        .astronaut-1 {
-            top: -50px;
-            left: -50px;
-            animation-delay: 0s;
-        }
-        
-        .astronaut-2 {
-            bottom: -50px;
-            right: -50px;
-            animation-delay: 1s;
-        }
-        
-        .stars {
+        /* پس‌زمینه پارالکس */
+        .parallax-bg {
             position: absolute;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
             z-index: -1;
+            overflow: hidden;
         }
         
-        .star {
+        .parallax-item {
             position: absolute;
-            background-color: white;
+            background: rgba(255, 58, 58, 0.1);
             border-radius: 50%;
-            animation: twinkle 2s infinite;
         }
         
+        /* کانتینر اصلی */
+        .container {
+            text-align: center;
+            padding: 3rem 2rem;
+            max-width: 900px;
+            background-color: rgba(255, 255, 255, 0.95);
+            border-radius: 20px;
+            box-shadow: 0 15px 40px rgba(210, 47, 47, 0.2);
+            position: relative;
+            overflow: hidden;
+            backdrop-filter: blur(5px);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            transform-style: preserve-3d;
+            perspective: 1000px;
+            margin: 2rem;
+            transition: transform 0.5s ease;
+        }
+        
+        .container:hover {
+            transform: translateY(-5px) rotateX(1deg) rotateY(1deg);
+        }
+        
+        /* عناوین */
+        h1 {
+            font-size: 10rem;
+            color: var(--primary-color);
+            margin-bottom: 0.5rem;
+            text-shadow: 5px 5px 0 rgba(210, 47, 47, 0.1);
+            animation: glitch 3s infinite alternate;
+            position: relative;
+            font-weight: 900;
+        }
+        
+        h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1.5rem;
+            color: var(--text-color);
+            position: relative;
+            display: inline-block;
+        }
+        
+        h2::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 4px;
+            background: var(--primary-color);
+            border-radius: 2px;
+            animation: underline 3s ease-in-out infinite;
+        }
+        
+        p {
+            font-size: 1.3rem;
+            margin-bottom: 2.5rem;
+            color: #666;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        /* دکمه */
+        .btn-container {
+            position: relative;
+            display: inline-block;
+            perspective: 1000px;
+        }
+        
+        .btn {
+            display: inline-block;
+            padding: 1rem 2.5rem;
+            background: var(--primary-color);
+            color: white;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: bold;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            box-shadow: 0 8px 25px rgba(255, 58, 58, 0.5);
+            border: none;
+            cursor: pointer;
+            font-size: 1.1rem;
+            position: relative;
+            overflow: hidden;
+            z-index: 1;
+            transform-style: preserve-3d;
+        }
+        
+        .btn:hover {
+            background: var(--dark-color);
+            transform: translateY(-5px) rotateX(10deg);
+            box-shadow: 0 15px 35px rgba(210, 47, 47, 0.6);
+        }
+        
+        .btn:active {
+            transform: translateY(0) rotateX(0);
+        }
+        
+        .btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: var(--dark-color);
+            z-index: -1;
+            transform: scaleX(0);
+            transform-origin: right;
+            transition: transform 0.5s ease;
+            border-radius: 50px;
+        }
+        
+        .btn:hover::before {
+            transform: scaleX(1);
+            transform-origin: left;
+        }
+        
+        /* آیکون‌ها */
+        .icons {
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+        
+        .icon {
+            width: 50px;
+            height: 50px;
+            background: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--primary-color);
+            font-size: 1.5rem;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .icon:hover {
+            transform: translateY(-5px) scale(1.1);
+            color: white;
+            background: var(--primary-color);
+            box-shadow: 0 10px 20px rgba(255, 58, 58, 0.4);
+        }
+        
+        /* انیمیشن مایع */
+        .liquid-shape {
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: var(--light-color);
+            border-radius: 45%;
+            animation: rotate 15s linear infinite;
+            opacity: 0.3;
+            z-index: -1;
+            transform: translateZ(-1px);
+        }
+        
+        /* عنصر متحرک */
+        .floating-element {
+            position: absolute;
+            opacity: 0.7;
+            z-index: -1;
+            animation: float 8s ease-in-out infinite;
+        }
+        
+        /* انیمیشن‌ها */
         @keyframes float {
             0%, 100% {
-                transform: translateY(0);
+                transform: translateY(0) rotate(0deg);
             }
             50% {
-                transform: translateY(-20px);
+                transform: translateY(-30px) rotate(5deg);
+            }
+        }
+        
+        @keyframes rotate {
+            0% {
+                transform: rotate(0deg);
+            }
+            100% {
+                transform: rotate(360deg);
+            }
+        }
+        
+        @keyframes glitch {
+            0% {
+                text-shadow: 5px 5px 0 rgba(210, 47, 47, 0.1);
+            }
+            25% {
+                text-shadow: -5px -5px 0 rgba(47, 210, 210, 0.1);
+            }
+            50% {
+                text-shadow: 5px -5px 0 rgba(47, 210, 47, 0.1);
+            }
+            75% {
+                text-shadow: -5px 5px 0 rgba(210, 47, 210, 0.1);
+            }
+            100% {
+                text-shadow: 5px 5px 0 rgba(210, 47, 47, 0.1);
+            }
+        }
+        
+        @keyframes underline {
+            0%, 100% {
+                width: 100px;
+            }
+            50% {
+                width: 200px;
             }
         }
         
         @keyframes pulse {
             0%, 100% {
                 transform: scale(1);
-                opacity: 1;
+                opacity: 0.7;
             }
             50% {
-                transform: scale(1.05);
-                opacity: 0.8;
-            }
-        }
-        
-        @keyframes twinkle {
-            0%, 100% {
-                opacity: 0.2;
-            }
-            50% {
+                transform: scale(1.1);
                 opacity: 1;
             }
         }
         
+        /* رسپانسیو */
         @media (max-width: 768px) {
             h1 {
-                font-size: 5rem;
+                font-size: 6rem;
+            }
+            
+            h2 {
+                font-size: 1.8rem;
+            }
+            
+            p {
+                font-size: 1.1rem;
+            }
+            
+            .container {
+                padding: 2rem 1.5rem;
+                margin: 1rem;
+            }
+            
+            .btn {
+                padding: 0.8rem 2rem;
+                font-size: 1rem;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            h1 {
+                font-size: 4rem;
             }
             
             h2 {
                 font-size: 1.5rem;
             }
             
-            .astronaut {
-                width: 100px;
+            .icons {
+                gap: 1rem;
+            }
+            
+            .icon {
+                width: 40px;
+                height: 40px;
+                font-size: 1.2rem;
             }
         }
     </style>
 </head>
 <body>
-    <div class="stars" id="stars"></div>
+    <div class="parallax-bg" id="parallaxBg"></div>
     
     <div class="container">
-        <img src="https://cdn-icons-png.flaticon.com/512/4219/4219017.png" alt="فضانورد" class="astronaut astronaut-1">
-        <img src="https://cdn-icons-png.flaticon.com/512/4219/4219063.png" alt="فضانورد" class="astronaut astronaut-2">
+        <div class="liquid-shape"></div>
         
         <h1>404</h1>
-        <h2>صفحه مورد نظر یافت نشد!</h2>
-        <p>به نظر می‌رسد صفحه‌ای که به دنبال آن هستید وجود ندارد یا ممکن است حذف شده باشد.</p>
-        <a href="https://danial8877.github.io/amenebeauty.ir" class="btn">بازگشت به صفحه اصلی</a>
+        <h2>متأسفیم! صفحه مورد نظر یافت نشد</h2>
+        <p>به نظر می‌رسد صفحه‌ای که به دنبال آن هستید وجود ندارد، حذف شده یا آدرس آن تغییر کرده است. می‌توانید از طریق دکمه زیر به صفحه اصلی بازگردید یا از منوی سایت برای یافتن محتوای مورد نظر خود استفاده کنید.</p>
+        
+        <div class="btn-container">
+            <a href="/" class="btn">
+                <i class="fas fa-home" style="margin-left: 8px;"></i>
+                بازگشت به صفحه اصلی
+            </a>
+        </div>
+        
+        <div class="icons">
+            <div class="icon">
+                <i class="fas fa-search"></i>
+            </div>
+            <div class="icon">
+                <i class="fas fa-envelope"></i>
+            </div>
+            <div class="icon">
+                <i class="fas fa-phone-alt"></i>
+            </div>
+            <div class="icon">
+                <i class="fas fa-info-circle"></i>
+            </div>
+        </div>
     </div>
 
     <script>
-        // ایجاد ستاره‌های درخشان
-        const starsContainer = document.getElementById('stars');
-        const starCount = 100;
+        // ایجاد عناصر پارالکس
+        const parallaxBg = document.getElementById('parallaxBg');
+        const parallaxCount = 15;
         
-        for (let i = 0; i < starCount; i++) {
-            const star = document.createElement('div');
-            star.classList.add('star');
+        for (let i = 0; i < parallaxCount; i++) {
+            const item = document.createElement('div');
+            item.classList.add('parallax-item');
             
-            // اندازه تصادفی بین 1 تا 3 پیکسل
-            const size = Math.random() * 2 + 1;
-            star.style.width = `${size}px`;
-            star.style.height = `${size}px`;
+            const size = Math.random() * 200 + 50;
+            item.style.width = `${size}px`;
+            item.style.height = `${size}px`;
             
-            // موقعیت تصادفی
-            star.style.left = `${Math.random() * 100}%`;
-            star.style.top = `${Math.random() * 100}%`;
+            item.style.left = `${Math.random() * 100}%`;
+            item.style.top = `${Math.random() * 100}%`;
             
-            // زمان انیمیشن تصادفی
-            star.style.animationDelay = `${Math.random() * 2}s`;
-            star.style.animationDuration = `${Math.random() * 3 + 1}s`;
+            item.style.opacity = Math.random() * 0.2 + 0.05;
+            item.style.animation = `pulse ${Math.random() * 10 + 5}s ease-in-out infinite alternate`;
+            item.style.animationDelay = `${Math.random() * 5}s`;
             
-            starsContainer.appendChild(star);
+            parallaxBg.appendChild(item);
         }
+        
+        // ایجاد عناصر شناور
+        const container = document.querySelector('.container');
+        const floatingElements = [
+            '❤️', '🔥', '🚀', '💫', '🌟', '💥', '❌', '⚠️', '🔴', '📛'
+        ];
+        
+        for (let i = 0; i < 8; i++) {
+            const element = document.createElement('div');
+            element.classList.add('floating-element');
+            element.textContent = floatingElements[Math.floor(Math.random() * floatingElements.length)];
+            
+            element.style.fontSize = `${Math.random() * 20 + 10}px`;
+            element.style.left = `${Math.random() * 100}%`;
+            element.style.top = `${Math.random() * 100}%`;
+            element.style.animationDuration = `${Math.random() * 10 + 5}s`;
+            element.style.animationDelay = `${Math.random() * 5}s`;
+            
+            container.appendChild(element);
+        }
+        
+        // افکت پارالکس با حرکت موس
+        document.addEventListener('mousemove', (e) => {
+            const x = e.clientX / window.innerWidth;
+            const y = e.clientY / window.innerHeight;
+            
+            container.style.transform = `rotateX(${(y - 0.5) * 5}deg) rotateY(${(x - 0.5) * 5}deg)`;
+            
+            const parallaxItems = document.querySelectorAll('.parallax-item');
+            parallaxItems.forEach(item => {
+                const speed = parseFloat(item.style.width) / 300;
+                item.style.transform = `translate(${(x - 0.5) * 20 * speed}px, ${(y - 0.5) * 20 * speed}px)`;
+            });
+        });
     </script>
 </body>
 </html>
