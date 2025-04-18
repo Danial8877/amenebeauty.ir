@@ -37,8 +37,6 @@ const before_load = document.getElementById("before_load");
 const after_load = document.getElementById("after_load");
 
 after_load.style.display = "none";
-after_load.style.position = "fixed";
-after_load.style.zIndex = "5555668678";
 before_load.style.display = "";
 
 window.onload = function () {
