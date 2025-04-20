@@ -2,9 +2,10 @@
   padding: 0px;
   margin: 0px;
   box-sizing: border-box;
-  font-family: "vazir", sans-serif;
-  font-variant-numeric: persian;
-  -moz-font-feature-settings: "numr" 1;
+            font-family: 'Vazir', sans-serif;
+            direction: rtl;
+            font-variant-numeric: persian;
+            -moz-font-feature-settings: "numr" 1;
 }
 
 /* Fonts */
