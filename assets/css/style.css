@@ -3,6 +3,8 @@
   margin: 0px;
   box-sizing: border-box;
   font-family: "vazir", sans-serif;
+  font-variant-numeric: persian;
+  -moz-font-feature-settings: "numr" 1;
 }
 
 /* Fonts */
