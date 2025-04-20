@@ -2,10 +2,7 @@
   padding: 0px;
   margin: 0px;
   box-sizing: border-box;
-            font-family: 'Vazir', sans-serif;
-            direction: rtl;
-            font-variant-numeric: persian;
-            -moz-font-feature-settings: "numr" 1;
+  font-family: 'Vazir', sans-serif;
 }
 
 /* Fonts */
@@ -22,6 +19,8 @@ body {
   margin: 0;
   font-size: 14px;
   direction: rtl;
+              font-variant-numeric: persian;
+            -moz-font-feature-settings: "numr" 1;
 }
 body {
   overflow-x: hidden !important;
