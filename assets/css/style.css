@@ -21,6 +21,7 @@ body {
   direction: rtl;
               font-variant-numeric: persian;
             -moz-font-feature-settings: "numr" 1;
+              font-feature-settings: "numr";
 }
 body {
   overflow-x: hidden !important;
