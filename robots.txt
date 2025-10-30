@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://danial8877.github.io/amenebeauty.ir/sitemap.xml
